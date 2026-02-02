@@ -11,7 +11,6 @@ jobs:
     steps:
       - name: dump context
         run: echo "${{ toJson(github.event) }}"
-        bash: shell
 
       - name: Comment on issue
         uses: peter-evans/create-or-update-comment@v2
