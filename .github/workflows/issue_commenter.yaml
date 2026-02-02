@@ -1,0 +1,21 @@
+name: issue commenter workflows
+
+on:
+  issue_comment:
+    types: [opened]
+
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump context
+        run: echo "${{ toJson(github.event) }}"
+        bash: shell
+
+      - name: Comment on issue
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thank you for your comment! We will get back to you shortly.
